@@ -62,7 +62,7 @@ public class StageSelected implements Screen{
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             switch (selected) {
                 case 1:
-                	game.setScreen(new Stage1(game));
+                	game.setScreen(new GameScreen(game,1));
                 	choose_sound.play();
                 	choose_sound.setVolume(3.1F);
                     dispose();

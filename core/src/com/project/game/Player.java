@@ -1,5 +1,6 @@
 package com.project.game;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.CpuSpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
@@ -8,8 +9,8 @@ public class Player {
 	private float x;
 	private float y;
 	private float width = 32, height = 32;
-
-	Rectangle character;
+	private Texture pic = new Texture("human.png");
+	private Rectangle character;
 	public static final int DIRECTION_UP = 1;
 	public static final int DIRECTION_RIGHT = 2;
 	public static final int DIRECTION_DOWN = 3;
@@ -17,7 +18,6 @@ public class Player {
 	public static final int DIRECTION_STILL = 0;
 	public static int speed = 200;
 	private TiledMapTileLayer collisionLayer;
-
 	public Player(TiledMapTileLayer collisionLayer) {
 		this.collisionLayer = collisionLayer;
 		character = new Rectangle();
@@ -26,6 +26,9 @@ public class Player {
 		character.width = width;
 		character.height = height;
 
+	}
+	public Texture getPic() {
+		return pic;
 	}
 
 	public TiledMapTileLayer getCollisionLayer() {

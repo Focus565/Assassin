@@ -11,15 +11,22 @@ public class World {
 
 	private Player player;
 	TiledMap tiledMap;
-	public World() {
-		tiledMap = new TmxMapLoader().load("map.tmx");
-		player = new Player((TiledMapTileLayer) tiledMap.getLayers().get(0));
-		player.setPostion(20*player.getCollisionLayer().getTileWidth(), 18*player.getCollisionLayer().getTileHeight());
+	public World(int level) { 
+		if(level == 1) {
+			tiledMap = new TmxMapLoader().load("map.tmx");
+			player = new Player((TiledMapTileLayer) tiledMap.getLayers().get(0));
+			player.setPostion(20*player.getCollisionLayer().getTileWidth(), 18*player.getCollisionLayer().getTileHeight());
+		}
+
 	}
 
 	public Player getPlayer() {
 		return player;
 	}
+	public TiledMap getTiledMap() {
+		return tiledMap;
+	}
+
 	public void update(float delta) {
 		if (Gdx.input.isKeyPressed(Keys.DOWN))
 			player.move(Player.DIRECTION_DOWN, delta);

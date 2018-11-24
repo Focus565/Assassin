@@ -5,15 +5,15 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 
-public class Stage1 implements Screen {
+public class GameScreen implements Screen {
 	final Assasin game;
 	Music bg_sound = Gdx.audio.newMusic(Gdx.files.internal("stage.mp3"));
 	WorldRenderer worldRenderer;
 	World world;
 
-	public Stage1(final Assasin game) {
+	public GameScreen(final Assasin game,int level) {
 		this.game = game;
-		world = new World();
+		world = new World(level);
 		worldRenderer = new WorldRenderer(game, world);
 		
 	}

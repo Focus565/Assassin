@@ -11,8 +11,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class WorldRenderer implements Screen {
 	final Assasin game;
-	Texture human = new Texture("human.png");
-	TiledMap tiledMap;
+
 	TiledMapRenderer tiledMapRenderer;
 	OrthographicCamera camera;
 	World world;
@@ -23,8 +22,7 @@ public class WorldRenderer implements Screen {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.update();
-		tiledMap = new TmxMapLoader().load("map.tmx");
-		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+		tiledMapRenderer = new OrthogonalTiledMapRenderer(world.getTiledMap());
 	}
 
 	@Override
@@ -42,7 +40,7 @@ public class WorldRenderer implements Screen {
 		tiledMapRenderer.setView(camera);
 		tiledMapRenderer.render();
 		game.batch.begin();
-		game.batch.draw(human, world.getPlayer().getX(), world.getPlayer().getY(), 32,32);
+		game.batch.draw(world.getPlayer().getPic(), world.getPlayer().getX(), world.getPlayer().getY(), world.getPlayer().getWidth(),world.getPlayer().getHeight());
 		game.batch.end();
 	}
 
