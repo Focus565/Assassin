@@ -1,7 +1,6 @@
 package com.project.game;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.CpuSpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -25,7 +24,6 @@ public class Player {
 		character.y = y;
 		character.width = width;
 		character.height = height;
-
 	}
 	public Texture getPic() {
 		return pic;
@@ -75,7 +73,6 @@ public class Player {
 		switch (dir) {
 		case DIRECTION_UP:
 			y += speed * delta;
-			// top left
 			collisionY = collisionLayer
 					.getCell((int) ((getX()) / tiledWidth), (int) ((getY() + getHeight()) / tiledHeight)).getTile()
 					.getProperties().containsKey("blocked");

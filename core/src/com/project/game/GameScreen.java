@@ -23,6 +23,7 @@ public class GameScreen implements Screen {
 		world.update(delta);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		worldRenderer.render(delta);
+		
 
 	}
 
@@ -32,9 +33,9 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void show() {
-		bg_sound.setLooping(true);
-		bg_sound.play();
-		bg_sound.setVolume(0.5F);
+//		bg_sound.setLooping(true);
+//		bg_sound.play();
+//		bg_sound.setVolume(0.5F);
 
 	}
 

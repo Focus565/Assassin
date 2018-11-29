@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="1">
- <tileset firstgid="1" source="scifi_platformTiles_32x32.tsx"/>
+ <tileset firstgid="1" name="scifi_platformTiles_32x32" tilewidth="32" tileheight="32" tilecount="805" columns="35">
+  <image source="scifi_platformTiles_32x32.png" width="1120" height="736"/>
+  <tile id="178">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+  <tile id="284">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+ </tileset>
  <layer id="3" name="Tile Layer 1" width="32" height="32">
   <data encoding="csv">
 285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,285,
