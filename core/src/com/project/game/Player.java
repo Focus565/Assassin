@@ -7,8 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Player {
 	private float x;
 	private float y;
-	private float width = 32, height = 32;
-	private Texture pic = new Texture("human.png");
+	private float width = 64, height = 64;
 	private Rectangle character;
 	public static final int DIRECTION_UP = 1;
 	public static final int DIRECTION_RIGHT = 2;
@@ -17,6 +16,7 @@ public class Player {
 	public static final int DIRECTION_STILL = 0;
 	public static int speed = 200;
 	private TiledMapTileLayer collisionLayer;
+	
 	public Player(TiledMapTileLayer collisionLayer) {
 		this.collisionLayer = collisionLayer;
 		character = new Rectangle();
@@ -24,11 +24,8 @@ public class Player {
 		character.y = y;
 		character.width = width;
 		character.height = height;
-	}
-	public Texture getPic() {
-		return pic;
-	}
 
+	}
 	public TiledMapTileLayer getCollisionLayer() {
 		return collisionLayer;
 	}
@@ -67,12 +64,15 @@ public class Player {
 	}
 
 	public void move(int dir, float delta) {
+		
 		float oldx = getX(), oldy = getY(), tiledWidth = collisionLayer.getTileWidth(),
 				tiledHeight = collisionLayer.getTileHeight();
 		boolean collisionX = false, collisionY = false;
+		
 		switch (dir) {
 		case DIRECTION_UP:
 			y += speed * delta;
+			// top left
 			collisionY = collisionLayer
 					.getCell((int) ((getX()) / tiledWidth), (int) ((getY() + getHeight()) / tiledHeight)).getTile()
 					.getProperties().containsKey("blocked");

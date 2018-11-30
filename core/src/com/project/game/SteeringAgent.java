@@ -76,7 +76,7 @@ public class SteeringAgent implements Steerable<Vector2> {
 	public void update(float delta) {
 		if (steeringBehavior != null) {
 			// Calculate steering acceleration
-			collision();
+//			collision();
 			steeringBehavior.calculateSteering(steeringOutput);
 			applySteering(steeringOutput, delta);
 		}
