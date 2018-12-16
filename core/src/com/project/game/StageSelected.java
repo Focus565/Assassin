@@ -93,8 +93,6 @@ public class StageSelected implements Screen{
         	public void clicked(InputEvent event, float x, float y) {
         		super.clicked(event, x, y);
         		game.setScreen(new GameScreen(game,1));
-            	choose_sound.play();
-            	choose_sound.setVolume(3.1F);
                 dispose();
         	}
         	});

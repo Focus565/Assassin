@@ -15,27 +15,18 @@ public class World {
 	TiledMap tiledMap;
 
 	Animator animate = new Animator(0);
-	SteeringAgent bot;
-	SteeringAgent playerAgent;
-	SteeringAgent bot1;
 	Wander<Vector2> wander;
 	Arrive<Vector2> arriveSB;
-
+	Bot bot1, bot2,bot3;
 	public World(int level) {
 		if (level == 1) {
 			tiledMap = new TmxMapLoader().load("map1.tmx");
 			player = new Player((TiledMapTileLayer) tiledMap.getLayers().get(0));
 			player.setPostion(1.3f * player.getCollisionLayer().getTileWidth(),
 					3.5f * player.getCollisionLayer().getTileHeight());
-			bot1 = new SteeringAgent(100);
-			bot1.position.set(300, 300);
-			playerAgent = new SteeringAgent(100);
-			playerAgent.position.set(player.getX(), player.getY());
-			arriveSB = new Arrive<Vector2>(bot1, playerAgent) //
-					.setTimeToTarget(0.1f) //
-					.setArrivalTolerance(0.001f) //
-					.setDecelerationRadius(80);
-			bot1.setBehavior(arriveSB);
+			bot1 = new Bot(300,400,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			bot2 = new Bot(800,100,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			bot3 = new Bot(700,700,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
 		}
 
 		if (level == 2) {
@@ -91,7 +82,9 @@ public class World {
 			player.move(Player.DIRECTION_RIGHT, delta);
 			getAnimator().stateTime += Gdx.graphics.getDeltaTime();
 		}
-		playerAgent.position.set(player.getX(), player.getY());
-		bot1.update(delta);
+		System.out.println(player.getX()+" "+player.getY());
+		bot1.tick();
+		bot2.tick();
+		bot3.tick();
 	}
 }

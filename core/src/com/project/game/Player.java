@@ -8,13 +8,13 @@ public class Player {
 	private float x;
 	private float y;
 	private float width = 64, height = 64;
-	private Rectangle character;
+	 Rectangle character;
 	public static final int DIRECTION_UP = 1;
 	public static final int DIRECTION_RIGHT = 2;
 	public static final int DIRECTION_DOWN = 3;
 	public static final int DIRECTION_LEFT = 4;
 	public static final int DIRECTION_STILL = 0;
-	public static int speed = 200;
+	public static int speed = 300;
 	private TiledMapTileLayer collisionLayer;
 	
 	public Player(TiledMapTileLayer collisionLayer) {
@@ -61,6 +61,8 @@ public class Player {
 	public void setPostion(float x, float y) {
 		setX(x);
 		setY(y);
+		character.x = x;
+		character.y = y;
 	}
 
 	public void move(int dir, float delta) {
@@ -68,7 +70,6 @@ public class Player {
 		float oldx = getX(), oldy = getY(), tiledWidth = collisionLayer.getTileWidth(),
 				tiledHeight = collisionLayer.getTileHeight();
 		boolean collisionX = false, collisionY = false;
-		
 		switch (dir) {
 		case DIRECTION_UP:
 			y += speed * delta;
