@@ -10,7 +10,7 @@ import com.badlogic.gdx.math.Circle;
 
 public class Bot extends Rectangle{
 	
-	public Animator animate = new Animator(0);
+	public BotAnimator animate = new BotAnimator(0);
 	private static int random = 0,smart = 1,find_path = 2;
 	private static int state = random;
 	private int right = 0,left = 1,up = 2,down = 3;
@@ -193,7 +193,7 @@ public class Bot extends Rectangle{
 			if(canMove(x+speedE+64,y)){
 				x+=speedE;
 				rectangle.set(x+64, y-(32)/2,32*5 , 32*3);
-				animate = new Animator(2);
+				animate = new BotAnimator(2);
 				animate.stateTime += Gdx.graphics.getDeltaTime();
 			}
 			else{
@@ -204,7 +204,7 @@ public class Bot extends Rectangle{
 			if(canMove(x-speedE,y)){
 				x-=speedE;
 				rectangle.set(x-32*5, y-32, 32*5,32*3 );
-				animate = new Animator(1);
+				animate = new BotAnimator(1);
 				animate.stateTime += Gdx.graphics.getDeltaTime();
 			}
 			else{
@@ -215,7 +215,7 @@ public class Bot extends Rectangle{
 			if(canMove(x,y+64+speedE)){
 				y+=speedE;
 				rectangle.set(x-16, y+64, 32*3, 32*5);
-				animate = new Animator(3);
+				animate = new BotAnimator(3);
 				animate.stateTime += Gdx.graphics.getDeltaTime();
 			}
 			else{
@@ -226,7 +226,7 @@ public class Bot extends Rectangle{
 			if(canMove(x,y-speedE)){
 				y-=speedE;
 				rectangle.set(x-16, y-32*5, 32*3, 32*5);
-				animate = new Animator(0);
+				animate = new BotAnimator(0);
 				animate.stateTime += Gdx.graphics.getDeltaTime();
 			}
 			else{
