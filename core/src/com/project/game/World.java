@@ -17,7 +17,7 @@ public class World {
 	Animator animate = new Animator(0);
 	Wander<Vector2> wander;
 	Arrive<Vector2> arriveSB;
-	Bot bot1, bot2,bot3;
+	Bot bot1, bot2, bot3;
 	public World(int level) {
 		if (level == 1) {
 			tiledMap = new TmxMapLoader().load("map1.tmx");

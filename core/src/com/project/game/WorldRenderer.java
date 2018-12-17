@@ -18,7 +18,7 @@ public class WorldRenderer implements Screen {
 	public WorldRenderer(Assasin game, World world) {
 		super();
 		this.game = game;
-		this.world =world;
+		this.world = world;
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.update();
