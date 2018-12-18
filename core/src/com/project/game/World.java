@@ -17,7 +17,8 @@ public class World {
 	Animator animate = new Animator(0);
 	Wander<Vector2> wander;
 	Arrive<Vector2> arriveSB;
-	Bot bot1, bot2, bot3;
+	Bot bot1, bot2, bot3, bot4;
+	Target target;
 	public World(int level) {
 		if (level == 1) {
 			tiledMap = new TmxMapLoader().load("map1.tmx");
@@ -26,14 +27,33 @@ public class World {
 					3.5f * player.getCollisionLayer().getTileHeight());
 			bot1 = new Bot(300,400,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
 			bot2 = new Bot(800,100,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
-			bot3 = new Bot(700,700,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			bot3 = new Bot(1000,650,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			bot4 = new Bot(500,650,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			target = new Target(1000, 100,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
 		}
 
 		if (level == 2) {
 			tiledMap = new TmxMapLoader().load("map2.tmx");
 			player = new Player((TiledMapTileLayer) tiledMap.getLayers().get(0));
-			player.setPostion(2.1f * player.getCollisionLayer().getTileWidth(),
-					28 * player.getCollisionLayer().getTileHeight());
+			player.setPostion(3.1f * player.getCollisionLayer().getTileWidth(),
+					28f * player.getCollisionLayer().getTileHeight());
+			bot1 = new Bot(100,110,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			bot2 = new Bot(800,110,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			bot3 = new Bot(800,500,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			bot4 = new Bot(1000,650,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			target = new Target(900,600,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+		}
+		
+		if (level == 3) {
+			tiledMap = new TmxMapLoader().load("map3.tmx");
+			player = new Player((TiledMapTileLayer) tiledMap.getLayers().get(0));
+			player.setPostion(3.1f * player.getCollisionLayer().getTileWidth(),
+					29f * player.getCollisionLayer().getTileHeight());
+			bot1 = new Bot(100,100,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			bot2 = new Bot(500,800,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			bot3 = new Bot(300,500,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			bot4 = new Bot(200,650,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
+			target = new Target(1000,110,player,(TiledMapTileLayer) tiledMap.getLayers().get(0));
 		}
 
 	}
@@ -82,9 +102,11 @@ public class World {
 			player.move(Player.DIRECTION_RIGHT, delta);
 			getAnimator().stateTime += Gdx.graphics.getDeltaTime();
 		}
-		System.out.println(player.getX()+" "+player.getY());
+//		System.out.println(player.getX()+" "+player.getY());
 		bot1.tick();
 		bot2.tick();
 		bot3.tick();
+		bot4.tick();
+		target.tick();
 	}
 }

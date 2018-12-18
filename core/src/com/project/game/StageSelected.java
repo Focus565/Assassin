@@ -135,7 +135,7 @@ public class StageSelected implements Screen{
         	public void clicked(InputEvent event, float x, float y) {
         		super.clicked(event, x, y);
         		dispose();
-        		game.setScreen(new MainMenuScreen(game));
+        		game.setScreen(new GameScreen(game,3));
         	}
         	});
     }
